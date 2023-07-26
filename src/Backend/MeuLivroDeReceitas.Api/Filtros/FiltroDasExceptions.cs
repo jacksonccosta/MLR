@@ -18,6 +18,8 @@ public class FiltroDasExceptions : IExceptionFilter
     {
         if (context.Exception is ErrosDeValidacaoException)
             TratarErrosDeValidacaoException(context);
+        else
+            LancarErroDesconhecido(context);
     }
 
     private void TratarErrosDeValidacaoException(ExceptionContext context)
