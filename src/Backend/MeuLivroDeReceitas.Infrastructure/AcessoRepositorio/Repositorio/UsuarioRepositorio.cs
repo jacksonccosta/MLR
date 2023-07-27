@@ -1,5 +1,5 @@
 ﻿using MeuLivroDeReceitas.Domain;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace MeuLivroDeReceitas.Infrastructure;
 
