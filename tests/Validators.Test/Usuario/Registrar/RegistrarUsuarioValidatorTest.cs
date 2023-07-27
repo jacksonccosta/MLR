@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using MeuLivroDeReceitas.Application;
 using MeuLivroDeReceitas.Exeptions;
-using Utilitario.Testes.Request;
+using Utilitario.Testes;
 using Xunit;
 
 namespace Validators.Test.Usuario.Registrar;
