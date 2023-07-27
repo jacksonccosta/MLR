@@ -9,8 +9,7 @@ public static class Bootstrapper
     {
         AdicionarChaveAdicionalSenha(services, configuration);
         AdicionarTokenJWT(services, configuration);
-
-        services.AddScoped<IRegistrarUsuarioUseCase, RegistrarUsuarioUseCase>();
+        AdicionarUseCases(services);
     }
 
     private static void AdicionarChaveAdicionalSenha(IServiceCollection services, IConfiguration configuration)
@@ -24,5 +23,11 @@ public static class Bootstrapper
         var sectionTempoDeVidaToken = configuration.GetRequiredSection("Configuracoes:TempoDeVidaToken");
         var sectionChaveToken = configuration.GetRequiredSection("Configuracoes:ChaveToken");
         services.AddScoped(option => new TokenController(int.Parse(sectionTempoDeVidaToken.Value), sectionChaveToken.Value));
+    }
+
+    private static void AdicionarUseCases(IServiceCollection services)
+    {
+        services.AddScoped<IRegistrarUsuarioUseCase, RegistrarUsuarioUseCase>()
+                .AddScoped<ILoginUseCase, LoginUseCase>();
     }
 }
