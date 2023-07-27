@@ -44,10 +44,20 @@ app.Run();
 
 void AtualizarBaseDeDados()
 {
-    var database = builder.Configuration.GetNomeDatabase();
-    var connectionString = builder.Configuration.GetConexao();
+    using var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
+    using var context = serviceScope.ServiceProvider.GetService<MeuLivroDeReceitaContext>();
 
-    Database.CriarDatabase(connectionString, database);
+    bool? dataBaseInMemory = context?.Database?.ProviderName?.Equals("Microsoft.EntityFrameworkCore.InMemory");
 
-    app.MigrationBancoDeDados();
+    if (!dataBaseInMemory.HasValue || !dataBaseInMemory.Value)
+    {
+        var database = builder.Configuration.GetNomeDatabase();
+        var connectionString = builder.Configuration.GetConexao();
+
+        Database.CriarDatabase(connectionString, database);
+
+        app.MigrationBancoDeDados();
+    }    
 }
+
+public partial class Program { }
