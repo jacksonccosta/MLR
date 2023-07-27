@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 namespace MeuLivroDeReceitas.Infrastructure;
 
-public class UsuarioRepositorio : IUsuarioWriteOnlyRepositorio, IUsuarioReadyOnlyRepositorio
+public class UsuarioRepositorio : IUsuarioWriteOnlyRepositorio, IUsuarioReadOnlyRepositorio
 {
     private readonly MeuLivroDeReceitaContext _contexto;
 
