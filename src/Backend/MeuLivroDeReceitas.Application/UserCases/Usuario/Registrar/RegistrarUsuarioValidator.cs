@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using MeuLivroDeReceitas.Application.UserCases.Usuario;
 using MeuLivroDeReceitas.Comunicacao;
 using MeuLivroDeReceitas.Exeptions;
 using System.Text.RegularExpressions;
@@ -28,10 +29,7 @@ public class RegistrarUsuarioValidator : AbstractValidator<RequestRegistrarUsuar
                 }
             });
         });
-        RuleFor(u => u.Senha).NotEmpty().WithMessage(ResourceMensagensDeErro.SENHA_USUARIO_EMBRANCO);        
-        When(u => !string.IsNullOrWhiteSpace(u.Senha), () =>
-        {
-            RuleFor(u => u.Senha.Length).GreaterThanOrEqualTo(6).WithMessage(ResourceMensagensDeErro.SENHA_USUARIO_MINIMO_SEIS_CARACTERES);
-        });
+
+        RuleFor(u => u.Senha).SetValidator(new SenhaValidator());
     }
 }

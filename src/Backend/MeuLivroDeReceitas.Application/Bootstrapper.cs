@@ -10,6 +10,12 @@ public static class Bootstrapper
         AdicionarChaveAdicionalSenha(services, configuration);
         AdicionarTokenJWT(services, configuration);
         AdicionarUseCases(services);
+        AdicionarUsuarioLogado(services);
+    }
+
+    private static void AdicionarUsuarioLogado(IServiceCollection services)
+    {
+        services.AddScoped<IUsuarioLogado, UsuarioLogado>();
     }
 
     private static void AdicionarChaveAdicionalSenha(IServiceCollection services, IConfiguration configuration)
@@ -28,6 +34,7 @@ public static class Bootstrapper
     private static void AdicionarUseCases(IServiceCollection services)
     {
         services.AddScoped<IRegistrarUsuarioUseCase, RegistrarUsuarioUseCase>()
-                .AddScoped<ILoginUseCase, LoginUseCase>();
+                .AddScoped<ILoginUseCase, LoginUseCase>()
+                .AddScoped<IAlterarSenhaUseCase, AlterarSenhaUseCase>();
     }
 }
