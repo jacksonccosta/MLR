@@ -1,6 +1,6 @@
 ﻿using MeuLivroDeReceitas.Comunicacao;
 using MeuLivroDeReceitas.Domain;
-using MeuLivroDeReceitas.Exeptions.ExecptionsBase;
+using MeuLivroDeReceitas.Exeptions;
 
 namespace MeuLivroDeReceitas.Application;
 

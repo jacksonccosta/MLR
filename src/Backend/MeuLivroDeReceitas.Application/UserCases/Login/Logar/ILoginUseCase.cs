@@ -4,5 +4,5 @@ namespace MeuLivroDeReceitas.Application;
 
 public interface ILoginUseCase
 {
-    Task<ResponseLoginJson> Executar(RequestLoginJson rquest);
+    Task<ResponseLoginJson> Executar(RequestLoginJson request);
 }
