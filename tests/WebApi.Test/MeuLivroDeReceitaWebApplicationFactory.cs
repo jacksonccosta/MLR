@@ -1,4 +1,5 @@
-﻿using MeuLivroDeReceitas.Infrastructure;
+﻿using MeuLivroDeReceitas.Domain;
+using MeuLivroDeReceitas.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,9 @@ namespace WebApi.Test;
 
 public class MeuLivroDeReceitaWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
 {
+    private Usuario _usuario;
+    private string _senha;
+
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment("Test")
@@ -32,6 +36,18 @@ public class MeuLivroDeReceitaWebApplicationFactory<TStartup> : WebApplicationFa
                 var dataBase = scopeService.GetRequiredService<MeuLivroDeReceitaContext>();
 
                 dataBase.Database.EnsureDeleted();
+
+                (_usuario, _senha) = ContextSeedInMemory.Seed(dataBase);
             });
+    }
+
+    public Usuario RecuperarUsuario()
+    {
+        return _usuario;
+    }
+
+    public string RecuperarSenha()
+    {
+        return _senha;
     }
 }

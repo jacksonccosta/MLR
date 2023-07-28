@@ -6,6 +6,6 @@ public class EncriptadorDeSenhaBuilder
 {
     public static Encriptador Instancia()
     {
-        return new Encriptador("ABCDE321");
+        return new Encriptador("nmU@VmK&JjshF70!1D9VCe1KLTX!hk2*$!@Xm#yJ");
     }
 }
