@@ -28,7 +28,7 @@ public class UsuarioRepositorio : IUsuarioWriteOnlyRepositorio, IUsuarioReadOnly
             .FirstOrDefaultAsync(u => u.Email.Equals(email) && u.Senha.Equals(senha));
     }
 
-    public async Task<Usuario> RecuperarEmail(string email)
+    public async Task<Usuario> RecuperarPorEmail(string email)
     {
         return await _contexto.Usuarios.AsNoTracking()
            .FirstOrDefaultAsync(u => u.Email.Equals(email));

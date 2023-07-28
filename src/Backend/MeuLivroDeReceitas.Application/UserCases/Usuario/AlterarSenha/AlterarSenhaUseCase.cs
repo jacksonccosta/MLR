@@ -9,12 +9,14 @@ public class AlterarSenhaUseCase : IAlterarSenhaUseCase
     private readonly IUsuarioLogado _usuarioLogado;
     private readonly IUsuarioUpdateOnlyRepositorio _repositorio;
     private readonly Encriptador _encriptador;
+    private readonly IUnidadeDeTrabalho _unidadeDeTrabalho;
 
-    public AlterarSenhaUseCase(IUsuarioUpdateOnlyRepositorio repositorio, IUsuarioLogado usuarioLogado, Encriptador encriptador)
+    public AlterarSenhaUseCase(IUsuarioUpdateOnlyRepositorio repositorio, IUsuarioLogado usuarioLogado, Encriptador encriptador, IUnidadeDeTrabalho unidadeDeTrabalho)
     {
         _repositorio = repositorio;
         _usuarioLogado = usuarioLogado;
         _encriptador = encriptador;
+        _unidadeDeTrabalho = unidadeDeTrabalho;
     }
 
     public async Task Executar(RequestAlterarSenhaJson request)
@@ -27,6 +29,7 @@ public class AlterarSenhaUseCase : IAlterarSenhaUseCase
         usuario.Senha = _encriptador.Criptografar(request.NovaSenha);
 
         _repositorio.Update(usuario);
+        await _unidadeDeTrabalho.Commit();
     }
 
     private void Validar(RequestAlterarSenhaJson request, Usuario usuario) 

@@ -1,4 +1,5 @@
 using MeuLivroDeReceitas.Api;
+using MeuLivroDeReceitas.Api.Filtros;
 using MeuLivroDeReceitas.Application;
 using MeuLivroDeReceitas.Domain;
 using MeuLivroDeReceitas.Infrastructure;
@@ -24,6 +25,7 @@ builder.Services.AddMvc(option => option.Filters.Add(typeof(FiltroDasExceptions)
 builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(config => { 
                                                                                         config.AddProfile(new AutoMapperConfig());
                                                                                     }).CreateMapper());
+builder.Services.AddScoped<UsuarioAutenticadoAttribute>();
 
 var app = builder.Build();
 

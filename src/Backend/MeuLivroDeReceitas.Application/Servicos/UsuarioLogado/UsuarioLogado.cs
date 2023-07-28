@@ -23,7 +23,7 @@ public class UsuarioLogado : IUsuarioLogado
         var token = authorization["Bearer".Length..].Trim();
         var emailUsuario = _tokenController.RecuperarEmail(token);
 
-        var usuario = await _repositorio.RecuperarEmail(emailUsuario);
+        var usuario = await _repositorio.RecuperarPorEmail(emailUsuario);
 
         return usuario;
     }
