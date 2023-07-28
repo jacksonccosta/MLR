@@ -1,9 +1,10 @@
 ﻿using MeuLivroDeReceitas.Domain;
+using MeuLivroDeReceitas.Domain.Repositorios.Usuario;
 using Microsoft.EntityFrameworkCore;
 
 namespace MeuLivroDeReceitas.Infrastructure;
 
-public class UsuarioRepositorio : IUsuarioWriteOnlyRepositorio, IUsuarioReadOnlyRepositorio
+public class UsuarioRepositorio : IUsuarioWriteOnlyRepositorio, IUsuarioReadOnlyRepositorio, IUpdateOnlyRepositorio
 {
     private readonly MeuLivroDeReceitaContext _contexto;
 
@@ -26,5 +27,10 @@ public class UsuarioRepositorio : IUsuarioWriteOnlyRepositorio, IUsuarioReadOnly
     {
         return await _contexto.Usuarios.AsNoTracking()
             .FirstOrDefaultAsync(u => u.Email.Equals(email) && u.Senha.Equals(senha));
+    }
+
+    public void Update(Usuario usuario)
+    {
+        _contexto.Usuarios.Update(usuario);
     }
 }
