@@ -26,6 +26,12 @@ public class UsuarioReadOnlyRepositorioBuilder
         if (!string.IsNullOrEmpty(email))
             _repositorio.Setup(i => i.ExisteUsuarioComEmail(email)).ReturnsAsync(true);
 
+        return this;
+    }
+
+    public UsuarioReadOnlyRepositorioBuilder RecuperarLogin(Usuario usuario)
+    {
+        _repositorio.Setup(i => i.Login(usuario.Email, usuario.Senha)).ReturnsAsync(usuario);
 
         return this;
     }
