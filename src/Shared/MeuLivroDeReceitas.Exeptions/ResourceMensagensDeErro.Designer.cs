@@ -115,6 +115,15 @@ namespace MeuLivroDeReceitas.Exeptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Senha atual é inválida..
+        /// </summary>
+        public static string SENHA_ATUAL_INVALIDA {
+            get {
+                return ResourceManager.GetString("SENHA_ATUAL_INVALIDA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A senha do usuário deve ser informada..
         /// </summary>
         public static string SENHA_USUARIO_EMBRANCO {

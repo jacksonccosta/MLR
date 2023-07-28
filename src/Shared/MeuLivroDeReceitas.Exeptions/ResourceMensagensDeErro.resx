@@ -135,6 +135,9 @@
   <data name="NOME_USUARIO_EMBRANCO" xml:space="preserve">
     <value>Nome do usuário deve ser informado.</value>
   </data>
+  <data name="SENHA_ATUAL_INVALIDA" xml:space="preserve">
+    <value>Senha atual é inválida.</value>
+  </data>
   <data name="SENHA_USUARIO_EMBRANCO" xml:space="preserve">
     <value>A senha do usuário deve ser informada.</value>
   </data>
