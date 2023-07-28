@@ -150,4 +150,10 @@
   <data name="TELEFONE_USUARIO_INVALIDO" xml:space="preserve">
     <value>The phonenumber must be at the format (xx) xxxx-xxxx.</value>
   </data>
+  <data name="TOKEN_EXPIRADO" xml:space="preserve">
+    <value>Login again on the App.</value>
+  </data>
+  <data name="USUARIO_NAO_AUTORIZADO" xml:space="preserve">
+    <value>You are not allowed to access this feature.</value>
+  </data>
 </root>

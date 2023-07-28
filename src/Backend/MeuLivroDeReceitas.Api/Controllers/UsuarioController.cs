@@ -1,3 +1,4 @@
+using MeuLivroDeReceitas.Api.Filtros;
 using MeuLivroDeReceitas.Application;
 using MeuLivroDeReceitas.Comunicacao;
 using Microsoft.AspNetCore.Mvc;
@@ -13,5 +14,17 @@ public class UsuarioController : MLRController
         var result = await useCase.Executar(request);
 
         return Created(string.Empty, result);
+    }
+    [HttpPut]
+    [Route("alterar-senha")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ServiceFilter(typeof(UsuarioAutenticadoAttribute))]
+    public async Task<IActionResult> AlterarSenha(
+        [FromServices] IAlterarSenhaUseCase useCase, 
+        [FromBody] RequestAlterarSenhaJson request)
+    {
+        await useCase.Executar(request);
+
+        return NoContent();
     }
 }

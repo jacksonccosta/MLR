@@ -158,5 +158,23 @@ namespace MeuLivroDeReceitas.Exeptions {
                 return ResourceManager.GetString("TELEFONE_USUARIO_INVALIDO", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Token Expirado! Faça login novamente no App..
+        /// </summary>
+        public static string TOKEN_EXPIRADO {
+            get {
+                return ResourceManager.GetString("TOKEN_EXPIRADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Você não tem permissão para acessar esse recurso..
+        /// </summary>
+        public static string USUARIO_NAO_AUTORIZADO {
+            get {
+                return ResourceManager.GetString("USUARIO_NAO_AUTORIZADO", resourceCulture);
+            }
+        }
     }
 }
