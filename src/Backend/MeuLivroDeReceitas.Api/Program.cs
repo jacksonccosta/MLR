@@ -1,5 +1,6 @@
 using MeuLivroDeReceitas.Api;
 using MeuLivroDeReceitas.Api.Filtros;
+using MeuLivroDeReceitas.Api.Middleware;
 using MeuLivroDeReceitas.Application;
 using MeuLivroDeReceitas.Domain;
 using MeuLivroDeReceitas.Infrastructure;
@@ -59,5 +60,7 @@ void AtualizarBaseDeDados()
         app.MigrationBancoDeDados();
     }    
 }
+
+app.UseMiddleware<CultureMiddleware>();
 
 public partial class Program { }
