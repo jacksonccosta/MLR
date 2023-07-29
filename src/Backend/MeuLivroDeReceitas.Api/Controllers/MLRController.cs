@@ -4,7 +4,7 @@ namespace MeuLivroDeReceitas.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class MLRController : ControllerBase
+public class MlrController : ControllerBase
 {
    
 }

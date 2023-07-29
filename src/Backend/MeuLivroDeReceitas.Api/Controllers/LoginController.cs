@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MeuLivroDeReceitas.Api.Controllers;
 
-public class LoginController : MLRController
+public class LoginController : MlrController
 {
     [HttpPost]
     [ProducesResponseType(typeof(RequestLoginJson), StatusCodes.Status200OK)]

@@ -5,8 +5,8 @@ namespace Utilitario.Testes;
 
 public class UsuarioWriteOnlyRepositorioBuilder
 {
-    private static UsuarioWriteOnlyRepositorioBuilder _instance;
-    private Mock<IUsuarioWriteOnlyRepositorio> _repositorio;
+    private static UsuarioWriteOnlyRepositorioBuilder? _instance;
+    private readonly Mock<IUsuarioWriteOnlyRepositorio> _repositorio;
 
     private UsuarioWriteOnlyRepositorioBuilder()
     {

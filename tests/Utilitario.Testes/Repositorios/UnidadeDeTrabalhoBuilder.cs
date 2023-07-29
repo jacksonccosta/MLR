@@ -5,7 +5,7 @@ namespace Utilitario.Testes.Repositorios;
 
 public class UnidadeDeTrabalhoBuilder
 {
-    private static UnidadeDeTrabalhoBuilder _instance;
+    private static UnidadeDeTrabalhoBuilder? _instance;
     private Mock<IUnidadeDeTrabalho> _repositorio;
 
     private UnidadeDeTrabalhoBuilder()

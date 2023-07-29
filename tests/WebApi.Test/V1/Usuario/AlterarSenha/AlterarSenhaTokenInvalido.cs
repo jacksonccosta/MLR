@@ -10,8 +10,8 @@ public class AlterarSenhaTokenInvalido : ControllerBase
 {
     private const string METODO = "usuario/alterar-senha";
 
-    private MeuLivroDeReceitas.Domain.Usuario _usuario;
-    private string _senha;
+    private readonly MeuLivroDeReceitas.Domain.Usuario _usuario;
+    private readonly string _senha;
 
     public AlterarSenhaTokenInvalido(MeuLivroDeReceitaWebApplicationFactory<Program> factory)
         : base(factory)
@@ -50,7 +50,7 @@ public class AlterarSenhaTokenInvalido : ControllerBase
     public async Task Validar_Erro_Token_Expirado()
     {
         var token = TokenControllerBuilder.TokenExpirado().GerarToken(_usuario.Email);
-        Thread.Sleep(1000);
+        await Task.Delay(1000);
 
         var request = RequestAlterarSenhaUsuarioBuilder.Construir();
         request.SenhaAtual = _senha;

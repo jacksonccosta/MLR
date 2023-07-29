@@ -9,8 +9,8 @@ namespace WebApi.Test;
 
 public class MeuLivroDeReceitaWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
 {
-    private Usuario _usuario;
-    private string _senha;
+    private Usuario? _usuario;
+    private string? _senha;
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {

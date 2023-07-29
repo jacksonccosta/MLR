@@ -11,8 +11,8 @@ public class LoginTest : ControllerBase
 {
     private const string METODO = "login";
 
-    private MeuLivroDeReceitas.Domain.Usuario _usuario;
-    private string _senha;
+    private readonly MeuLivroDeReceitas.Domain.Usuario _usuario;
+    private readonly string _senha;
 
     public LoginTest(MeuLivroDeReceitaWebApplicationFactory<Program> factory)
         : base(factory)
@@ -60,7 +60,9 @@ public class LoginTest : ControllerBase
         var responseData = await JsonDocument.ParseAsync(responseBody);
 
         var erro = responseData.RootElement.GetProperty("mensagens").EnumerateArray();
-        erro.Should().ContainSingle().And.Contain(c => c.GetString().Equals(ResourceMensagensDeErro.LOGIN_INVALIDO));
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+        _ = erro.Should().ContainSingle().And.Contain(c => c.GetString().Equals(ResourceMensagensDeErro.LOGIN_INVALIDO));
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
     }
 
     [Fact]
@@ -81,7 +83,9 @@ public class LoginTest : ControllerBase
         var responseData = await JsonDocument.ParseAsync(responseBody);
 
         var erro = responseData.RootElement.GetProperty("mensagens").EnumerateArray();
-        erro.Should().ContainSingle().And.Contain(c => c.GetString().Equals(ResourceMensagensDeErro.LOGIN_INVALIDO));
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+        _ = erro.Should().ContainSingle().And.Contain(c => c.GetString().Equals(ResourceMensagensDeErro.LOGIN_INVALIDO));
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
     }
 
     [Fact]
@@ -102,6 +106,8 @@ public class LoginTest : ControllerBase
         var responseData = await JsonDocument.ParseAsync(responseBody);
 
         var erro = responseData.RootElement.GetProperty("mensagens").EnumerateArray();
-        erro.Should().ContainSingle().And.Contain(c => c.GetString().Equals(ResourceMensagensDeErro.LOGIN_INVALIDO));
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+        _ = erro.Should().ContainSingle().And.Contain(c => c.GetString().Equals(ResourceMensagensDeErro.LOGIN_INVALIDO));
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
     }
 }

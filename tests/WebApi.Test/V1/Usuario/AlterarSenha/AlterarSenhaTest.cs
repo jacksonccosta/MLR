@@ -11,8 +11,8 @@ public class AlterarSenhaTest : ControllerBase
 {
     private const string METODO = "usuario/alterar-senha";
 
-    private MeuLivroDeReceitas.Domain.Usuario _usuario;
-    private string _senha;
+    private readonly MeuLivroDeReceitas.Domain.Usuario _usuario;
+    private readonly string _senha;
 
     public AlterarSenhaTest(MeuLivroDeReceitaWebApplicationFactory<Program> factory)
         : base(factory)
@@ -51,6 +51,8 @@ public class AlterarSenhaTest : ControllerBase
         var responseData = await JsonDocument.ParseAsync(responseBody);
 
         var erro = responseData.RootElement.GetProperty("mensagens").EnumerateArray();
-        erro.Should().ContainSingle().And.Contain(c => c.GetString().Equals(ResourceMensagensDeErro.SENHA_USUARIO_EMBRANCO));
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+        _ = erro.Should().ContainSingle().And.Contain(c => c.GetString().Equals(ResourceMensagensDeErro.SENHA_USUARIO_EMBRANCO));
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
     }
 }
