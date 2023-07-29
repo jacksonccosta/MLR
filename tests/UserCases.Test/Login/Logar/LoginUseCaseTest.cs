@@ -87,7 +87,7 @@ public class LoginUseCaseTest
             .Where(execption => execption.Message.Equals(ResourceMensagensDeErro.LOGIN_INVALIDO));
     }
 
-    private LoginUseCase CriarUseCase(Usuario usuario)
+    private static LoginUseCase CriarUseCase(Usuario usuario)
     {
         var repositorioReadOnly = UsuarioReadOnlyRepositorioBuilder.Instancia().RecuperarLogin(usuario).Construir();
         var encriptador = EncriptadorDeSenhaBuilder.Instancia();

@@ -20,7 +20,7 @@ public static class Bootstrapper
 
     private static void AddContexto(IServiceCollection services, IConfiguration configurationManager)
     {
-        bool.TryParse(configurationManager.GetSection("Configuracoes:DataBaseInMemory").Value, out bool dataBaseInMemory);
+        _ = bool.TryParse(configurationManager.GetSection("Configuracoes:DataBaseInMemory").Value, out bool dataBaseInMemory);
 
         if (!dataBaseInMemory) 
         {
@@ -48,7 +48,7 @@ public static class Bootstrapper
 
     private static void AddFluentMigrator(IServiceCollection services, IConfiguration configurationManager)
     {
-        bool.TryParse(configurationManager.GetSection("Configuracoes:DataBaseInMemory").Value, out bool dataBaseInMemory);
+        _ = bool.TryParse(configurationManager.GetSection("Configuracoes:DataBaseInMemory").Value, out bool dataBaseInMemory);
 
         if (!dataBaseInMemory)
             services.AddFluentMigratorCore().ConfigureRunner(c => 

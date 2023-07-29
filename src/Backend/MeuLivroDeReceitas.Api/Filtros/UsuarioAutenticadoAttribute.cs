@@ -30,7 +30,7 @@ public class UsuarioAutenticadoAttribute : AuthorizeAttribute, IAsyncAuthorizati
             var usuario = await _repositorio.RecuperarPorEmail(email);
 
             if (usuario is null)
-                throw new System.Exception();
+                throw new MeuLivroDeReceitasException(string.Empty);
         }
         catch (SecurityTokenExpiredException)
         {
@@ -42,22 +42,22 @@ public class UsuarioAutenticadoAttribute : AuthorizeAttribute, IAsyncAuthorizati
         }
     }
 
-    private string TokenInRequest(AuthorizationFilterContext context)
+    private static string TokenInRequest(AuthorizationFilterContext context)
     {
         var authorization = context.HttpContext.Request.Headers["Authorization"].ToString();
 
         if (string.IsNullOrWhiteSpace(authorization))
-            throw new System.Exception();
+            throw new MeuLivroDeReceitasException(string.Empty);
 
         return authorization["Bearer".Length..].Trim();
     }
 
-    private void TokenExpirado(AuthorizationFilterContext context)
+    private static void TokenExpirado(AuthorizationFilterContext context)
     {
         context.Result = new UnauthorizedObjectResult(new RespostaErroJson(ResourceMensagensDeErro.TOKEN_EXPIRADO));
     }
 
-    private void UsuarioNaoAutorizado(AuthorizationFilterContext context)
+    private static void UsuarioNaoAutorizado(AuthorizationFilterContext context)
     {
         context.Result = new UnauthorizedObjectResult(new RespostaErroJson(ResourceMensagensDeErro.USUARIO_NAO_AUTORIZADO));
     }
