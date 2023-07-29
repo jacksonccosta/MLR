@@ -1,7 +1,7 @@
 ﻿using Bogus;
 using MeuLivroDeReceitas.Comunicacao;
 
-namespace Utilitario.Testes.Request;
+namespace Utilitario.Testes;
 
 public class RequestAlterarSenhaUsuarioBuilder
 {
