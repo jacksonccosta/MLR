@@ -41,13 +41,9 @@ public class MeuLivroDeReceitaWebApplicationFactory<TStartup> : WebApplicationFa
             });
     }
 
-    public Usuario RecuperarUsuario()
-    {
-        return _usuario;
-    }
+#pragma warning disable CS8603 // Possible null reference return.
+    public Usuario RecuperarUsuario() => _usuario;
 
-    public string RecuperarSenha()
-    {
-        return _senha;
-    }
+    public string RecuperarSenha() => _senha;
+#pragma warning restore CS8603 // Possible null reference return.
 }

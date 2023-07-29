@@ -47,6 +47,8 @@ public class RegistrarUsuarioteste : ControllerBase
         var responseData = await JsonDocument.ParseAsync(responseBody);
 
         var erro = responseData.RootElement.GetProperty("mensagens").EnumerateArray();
-        erro.Should().ContainSingle().And.Contain(c => c.GetString().Equals(ResourceMensagensDeErro.NOME_USUARIO_EMBRANCO));
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+        _ = erro.Should().ContainSingle().And.Contain(c => c.GetString().Equals(ResourceMensagensDeErro.NOME_USUARIO_EMBRANCO));
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
     }
 }
