@@ -22,7 +22,8 @@ public class RegistrarUsuarioValidator : AbstractValidator<RequestRegistrarUsuar
             RuleFor(u => u.Telefone).Custom((telefone, contexto) =>
             {
                 string padraoTelefone = "[0-9]{2} [1-9]{1} [0-9]{4}-[0-9]{4}";
-                var isMatch = Regex.IsMatch(telefone, padraoTelefone);
+                //var isMatch = Regex.IsMatch(telefone, padraoTelefone);
+                var isMatch = Regex.IsMatch(telefone, padraoTelefone, RegexOptions.None, TimeSpan.FromMilliseconds(100));
                 if (!isMatch)
                 {
                     contexto.AddFailure(new FluentValidation.Results.ValidationFailure(nameof(telefone), ResourceMensagensDeErro.TELEFONE_USUARIO_INVALIDO));
