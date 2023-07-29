@@ -14,10 +14,10 @@ public class AlterarSenhaUseCaseTest
     [Fact]
     public async Task Validar_Sucvesso()
     {
-        (var usuario, var senha) = UsuarioBuilder.Contruir();
+        (var usuario, var senha) = UsuarioBuilder.Construir();
         var useCase = CriarUseCase(usuario);
 
-        var requisicao = RequestAlterarSenhaUsuarioBuilder.Contruir();
+        var requisicao = RequestAlterarSenhaUsuarioBuilder.Construir();
         requisicao.SenhaAtual = senha;
 
         Func<Task> acao = async () =>
@@ -35,7 +35,7 @@ public class AlterarSenhaUseCaseTest
     [Fact]
     public async Task Validar_Erro_NovaSenha_Vazio()
     {
-        (var usuario, var senha) = UsuarioBuilder.Contruir();
+        (var usuario, var senha) = UsuarioBuilder.Construir();
         var useCase = CriarUseCase(usuario);
 
         Func<Task> acao = async () =>
@@ -59,10 +59,10 @@ public class AlterarSenhaUseCaseTest
     [InlineData(5)]
     public async Task Validar_Erro_SenhaAtual_Invalida(int tamanhoSenha)
     {
-        (var usuario, var senha) = UsuarioBuilder.Contruir();
+        (var usuario, var senha) = UsuarioBuilder.Construir();
         var useCase = CriarUseCase(usuario);
 
-        var requisicao = RequestAlterarSenhaUsuarioBuilder.Contruir(tamanhoSenha);
+        var requisicao = RequestAlterarSenhaUsuarioBuilder.Construir(tamanhoSenha);
         requisicao.SenhaAtual = senha;
 
         Func<Task> acao = async () =>

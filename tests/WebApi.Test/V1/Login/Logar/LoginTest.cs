@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using MeuLivroDeReceitas.Comunicacao;
-using MeuLivroDeReceitas.Domain;
 using MeuLivroDeReceitas.Exeptions;
 using System.Net;
 using System.Text.Json;
@@ -12,7 +11,7 @@ public class LoginTest : ControllerBase
 {
     private const string METODO = "login";
 
-    private Usuario _usuario;
+    private MeuLivroDeReceitas.Domain.Usuario _usuario;
     private string _senha;
 
     public LoginTest(MeuLivroDeReceitaWebApplicationFactory<Program> factory)

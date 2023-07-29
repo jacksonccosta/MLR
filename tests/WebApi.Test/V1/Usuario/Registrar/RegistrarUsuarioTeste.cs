@@ -19,7 +19,7 @@ public class RegistrarUsuarioteste : ControllerBase
     [Fact]
     public async Task Validar_Sucesso()
     {
-        var request = RequestRegistrarUsuarioBuilder.Contruir();
+        var request = RequestRegistrarUsuarioBuilder.Construir();
 
         var resposta = await PostRequest(METODO, request);
 
@@ -35,7 +35,7 @@ public class RegistrarUsuarioteste : ControllerBase
     [Fact]
     public async Task Validar_Erro_Nome_Vazio()
     {
-        var request = RequestRegistrarUsuarioBuilder.Contruir();
+        var request = RequestRegistrarUsuarioBuilder.Construir();
         request.Nome= string.Empty;
 
         var resposta = await PostRequest(METODO, request);

@@ -13,7 +13,7 @@ public class RegistrarUsuarioUseCaseTest
     [Fact]
     public async Task Validar_Sucesso()
     {
-        var request = RequestRegistrarUsuarioBuilder.Contruir();
+        var request = RequestRegistrarUsuarioBuilder.Construir();
 
         var useCase = CriarUseCase();
 
@@ -26,7 +26,7 @@ public class RegistrarUsuarioUseCaseTest
     [Fact]
     public async Task Validar_Erro_Email_Duplicado()
     {
-        var request = RequestRegistrarUsuarioBuilder.Contruir();
+        var request = RequestRegistrarUsuarioBuilder.Construir();
 
         var useCase = CriarUseCase(request.Email);
 
@@ -39,7 +39,7 @@ public class RegistrarUsuarioUseCaseTest
     [Fact]
     public async Task Validar_Erro_Email_Vazio()
     {
-        var request = RequestRegistrarUsuarioBuilder.Contruir();
+        var request = RequestRegistrarUsuarioBuilder.Construir();
         request.Email = string.Empty;
 
         var useCase = CriarUseCase();

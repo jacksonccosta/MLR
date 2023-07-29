@@ -5,7 +5,7 @@ namespace Utilitario.Testes;
 
 public class RequestRegistrarUsuarioBuilder
 {
-    public static RequestRegistrarUsuarioJson Contruir(int tamanhoSenha = 10)
+    public static RequestRegistrarUsuarioJson Construir(int tamanhoSenha = 10)
     {
         return new Faker<RequestRegistrarUsuarioJson>()
                 .RuleFor(u => u.Nome, f => f.Person.FullName)
