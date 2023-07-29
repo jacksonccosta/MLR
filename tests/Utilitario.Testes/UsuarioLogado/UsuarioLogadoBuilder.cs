@@ -6,8 +6,8 @@ namespace Utilitario.Testes;
 
 public class UsuarioLogadoBuilder
 {
-    private static UsuarioLogadoBuilder _instance;
-    private Mock<IUsuarioLogado> _repositorio;
+    private static UsuarioLogadoBuilder? _instance;
+    private readonly Mock<IUsuarioLogado> _repositorio;
 
     private UsuarioLogadoBuilder()
     {

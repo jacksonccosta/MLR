@@ -5,7 +5,7 @@ namespace Utilitario.Testes;
 
 public class UsuarioReadOnlyRepositorioBuilder
 {
-    private static UsuarioReadOnlyRepositorioBuilder _instance;
+    private static UsuarioReadOnlyRepositorioBuilder? _instance;
     private Mock<IUsuarioReadOnlyRepositorio> _repositorio;
 
     private UsuarioReadOnlyRepositorioBuilder()

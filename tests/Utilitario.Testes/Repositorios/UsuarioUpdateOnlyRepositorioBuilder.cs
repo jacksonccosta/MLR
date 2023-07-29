@@ -5,7 +5,7 @@ namespace Utilitario.Testes.Repositorios;
 
 public class UsuarioUpdateOnlyRepositorioBuilder
 {
-    private static UsuarioUpdateOnlyRepositorioBuilder _instance;
+    private static UsuarioUpdateOnlyRepositorioBuilder? _instance;
     private Mock<IUsuarioUpdateOnlyRepositorio> _repositorio;
 
     private UsuarioUpdateOnlyRepositorioBuilder()
