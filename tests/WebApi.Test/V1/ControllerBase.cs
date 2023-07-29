@@ -49,7 +49,9 @@ public class ControllerBase : IClassFixture<MeuLivroDeReceitaWebApplicationFacto
 
         var responseData = await JsonDocument.ParseAsync(responseBody);
 
+#pragma warning disable CS8603 // Possible null reference return.
         return responseData.RootElement.GetProperty("token").GetString();
+#pragma warning restore CS8603 // Possible null reference return.
     }
 
     private void AutorizarRequest(string token)
