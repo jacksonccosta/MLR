@@ -13,7 +13,7 @@ public class AlterarSenhaValidatorTest
     {
         var validator = new AlterarSenhaValidator();
 
-        var request = RequestAlterarSenhaUsuarioBuilder.Contruir();
+        var request = RequestAlterarSenhaUsuarioBuilder.Construir();
 
         var resultado = validator.Validate(request);
 
@@ -25,7 +25,7 @@ public class AlterarSenhaValidatorTest
     {
         var validator = new AlterarSenhaValidator();
 
-        var request = RequestAlterarSenhaUsuarioBuilder.Contruir();
+        var request = RequestAlterarSenhaUsuarioBuilder.Construir();
         request.NovaSenha = string.Empty;
 
         var resultado = validator.Validate(request);
@@ -44,7 +44,7 @@ public class AlterarSenhaValidatorTest
     {
         var validator = new AlterarSenhaValidator();
 
-        var request = RequestAlterarSenhaUsuarioBuilder.Contruir(tamanhoSenha);
+        var request = RequestAlterarSenhaUsuarioBuilder.Construir(tamanhoSenha);
 
         var resultado = validator.Validate(request);
 

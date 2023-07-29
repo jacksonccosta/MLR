@@ -13,7 +13,7 @@ public class LoginUseCaseTest
     [Fact]
     public async Task Validar_Sucesso()
     {
-        (var usuario, var senha) = UsuarioBuilder.Contruir();
+        (var usuario, var senha) = UsuarioBuilder.Construir();
 
         var useCase = CriarUseCase(usuario);
         var response = await useCase.Executar(new MeuLivroDeReceitas.Comunicacao.RequestLoginJson
@@ -30,7 +30,7 @@ public class LoginUseCaseTest
     [Fact]
     public async Task Validar_Erro_Senha_Invalida()
     {
-        (var usuario, var senha) = UsuarioBuilder.Contruir();
+        (var usuario, var senha) = UsuarioBuilder.Construir();
 
         var useCase = CriarUseCase(usuario);
 
@@ -50,7 +50,7 @@ public class LoginUseCaseTest
     [Fact]
     public async Task Validar_Erro_Email_Invalida()
     {
-        (var usuario, var senha) = UsuarioBuilder.Contruir();
+        (var usuario, var senha) = UsuarioBuilder.Construir();
 
         var useCase = CriarUseCase(usuario);
 
@@ -70,7 +70,7 @@ public class LoginUseCaseTest
     [Fact]
     public async Task Validar_Erro_Login_Invalida()
     {
-        (var usuario, var senha) = UsuarioBuilder.Contruir();
+        (var usuario, var senha) = UsuarioBuilder.Construir();
 
         var useCase = CriarUseCase(usuario);
 

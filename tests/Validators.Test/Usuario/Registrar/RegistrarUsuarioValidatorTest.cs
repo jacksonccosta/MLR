@@ -13,7 +13,7 @@ public class RegistrarUsuarioValidatorTest
     {
         var validator = new RegistrarUsuarioValidator();
 
-        var request = RequestRegistrarUsuarioBuilder.Contruir();
+        var request = RequestRegistrarUsuarioBuilder.Construir();
 
         var resultado = validator.Validate(request);
 
@@ -25,7 +25,7 @@ public class RegistrarUsuarioValidatorTest
     {
         var validator = new RegistrarUsuarioValidator();
 
-        var request = RequestRegistrarUsuarioBuilder.Contruir();
+        var request = RequestRegistrarUsuarioBuilder.Construir();
         request.Nome = string.Empty;
 
         var resultado = validator.Validate(request);
@@ -39,7 +39,7 @@ public class RegistrarUsuarioValidatorTest
     {
         var validator = new RegistrarUsuarioValidator();
 
-        var request = RequestRegistrarUsuarioBuilder.Contruir();
+        var request = RequestRegistrarUsuarioBuilder.Construir();
         request.Email = string.Empty;
 
         var resultado = validator.Validate(request);
@@ -53,7 +53,7 @@ public class RegistrarUsuarioValidatorTest
     {
         var validator = new RegistrarUsuarioValidator();
 
-        var request = RequestRegistrarUsuarioBuilder.Contruir();
+        var request = RequestRegistrarUsuarioBuilder.Construir();
         request.Senha = string.Empty;
 
         var resultado = validator.Validate(request);
@@ -67,7 +67,7 @@ public class RegistrarUsuarioValidatorTest
     {
         var validator = new RegistrarUsuarioValidator();
 
-        var request = RequestRegistrarUsuarioBuilder.Contruir();
+        var request = RequestRegistrarUsuarioBuilder.Construir();
         request.Telefone = string.Empty;
 
         var resultado = validator.Validate(request);
@@ -81,7 +81,7 @@ public class RegistrarUsuarioValidatorTest
     {
         var validator = new RegistrarUsuarioValidator();
 
-        var request = RequestRegistrarUsuarioBuilder.Contruir();
+        var request = RequestRegistrarUsuarioBuilder.Construir();
         request.Email = "jackson.com";
 
         var resultado = validator.Validate(request);
@@ -95,7 +95,7 @@ public class RegistrarUsuarioValidatorTest
     {
         var validator = new RegistrarUsuarioValidator();
 
-        var request = RequestRegistrarUsuarioBuilder.Contruir();
+        var request = RequestRegistrarUsuarioBuilder.Construir();
         request.Telefone = "12 3";
 
         var resultado = validator.Validate(request);
@@ -114,7 +114,7 @@ public class RegistrarUsuarioValidatorTest
     {
         var validator = new RegistrarUsuarioValidator();
 
-        var request = RequestRegistrarUsuarioBuilder.Contruir(tamanhoSenha);
+        var request = RequestRegistrarUsuarioBuilder.Construir(tamanhoSenha);
 
         var resultado = validator.Validate(request);
 

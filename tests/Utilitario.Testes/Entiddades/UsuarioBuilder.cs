@@ -5,7 +5,7 @@ namespace Utilitario.Testes;
 
 public class UsuarioBuilder
 {
-    public static (Usuario usuario, string senha) Contruir()
+    public static (Usuario usuario, string senha) Construir()
     {
         string senha = string.Empty;
 
