@@ -50,7 +50,7 @@ public class RegistrarUsuarioUseCaseTest
              .Where(e => e.MensagensDeErro.Count == 1 && e.MensagensDeErro.Contains(ResourceMensagensDeErro.EMAIL_USUARIO_EMBRANCO));
     }
 
-    private RegistrarUsuarioUseCase CriarUseCase(string email = "")
+    private static RegistrarUsuarioUseCase CriarUseCase(string email = "")
     {
         var mapper = MapperBuilder.Instancia();
         var repositorio = UsuarioWriteOnlyRepositorioBuilder.Instancia().Construir();
