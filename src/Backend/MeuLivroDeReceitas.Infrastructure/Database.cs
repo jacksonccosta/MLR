@@ -17,7 +17,8 @@ namespace MeuLivroDeReceitas.Infrastructure
             if (!registros.Any())
             {
                 // Utilizando parâmetros nomeados para evitar SQL injection
-                minhaConexao.Execute("CREATE DATABASE @nome", param);
+                string sql = $"CREATE DATABASE `{nomeDatabase}`";
+                minhaConexao.Execute(sql);
             }
         }
     }
