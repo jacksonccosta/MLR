@@ -2,7 +2,7 @@
 
 namespace MeuLivroDeReceitas.Infrastructure.Migrations.Versoes
 {
-    [Migration((long)NumVersoes.CriarTabelaReceita, "Cria tabela de Usario")]
+    [Migration((long)NumVersoes.CriarTabelaReceita, "Cria tabela de Receitas e Ingredientes")]
     public class Versao0000002 : Migration
     {
         public override void Down()
