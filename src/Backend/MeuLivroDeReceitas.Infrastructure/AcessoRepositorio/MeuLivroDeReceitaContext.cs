@@ -9,6 +9,7 @@ public class MeuLivroDeReceitaContext : DbContext
     public MeuLivroDeReceitaContext(DbContextOptions<MeuLivroDeReceitaContext> options) : base(options) {}
 
     public DbSet<Usuario> Usuarios { get; set; }
+    public DbSet<Receita> Receitas { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
