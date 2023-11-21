@@ -7,7 +7,7 @@ using Utilitario.Testes;
 using Utilitario.Testes.Repositorios;
 using Xunit;
 
-namespace UserCases.Test;
+namespace UseCases.Test;
 
 public class AlterarSenhaUseCaseTest
 {

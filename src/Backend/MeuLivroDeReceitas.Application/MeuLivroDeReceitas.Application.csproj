@@ -7,10 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="UseCases\Receita\RegistrarReceitaValidator.cs\**" />
+    <EmbeddedResource Remove="UseCases\Receita\RegistrarReceitaValidator.cs\**" />
+    <None Remove="UseCases\Receita\RegistrarReceitaValidator.cs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\..\..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.Hashids" Version="2.0.0" />
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="FluentValidation" Version="11.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />

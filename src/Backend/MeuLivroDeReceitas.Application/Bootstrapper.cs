@@ -8,6 +8,7 @@ public static class Bootstrapper
     public static void AddApplication(this IServiceCollection services, IConfiguration configuration)
     {
         AdicionarChaveAdicionalSenha(services, configuration);
+        AdicionarHashId(services, configuration);
         AdicionarTokenJWT(services, configuration);
         AdicionarUseCases(services);
         AdicionarUsuarioLogado(services);
@@ -31,10 +32,21 @@ public static class Bootstrapper
         services.AddScoped(option => new TokenController(int.Parse(sectionTempoDeVidaToken.Value), sectionChaveToken.Value));
     }
 
+    private static void AdicionarHashId(IServiceCollection services, IConfiguration configuration)
+    {
+        var salt = configuration.GetRequiredSection("Configuracoes:HashId:Salt");
+        services.AddHashids(setup =>
+        {
+            setup.Salt = salt.Value;
+            setup.MinHashLength = 3;
+        });
+    }
+
     private static void AdicionarUseCases(IServiceCollection services)
     {
         services.AddScoped<IRegistrarUsuarioUseCase, RegistrarUsuarioUseCase>()
                 .AddScoped<ILoginUseCase, LoginUseCase>()
-                .AddScoped<IAlterarSenhaUseCase, AlterarSenhaUseCase>();
+                .AddScoped<IAlterarSenhaUseCase, AlterarSenhaUseCase>()
+                .AddScoped<IRegistrarReceitaUseCase, RegistrarReceitaUseCase>();
     }
 }
