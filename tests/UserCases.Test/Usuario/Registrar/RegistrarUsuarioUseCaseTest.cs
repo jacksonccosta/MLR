@@ -6,7 +6,7 @@ using Utilitario.Testes.Repositorios;
 using Utilitario.Testes.Token;
 using Xunit;
 
-namespace UserCases.Test;
+namespace UseCases.Test;
 
 public class RegistrarUsuarioUseCaseTest
 {

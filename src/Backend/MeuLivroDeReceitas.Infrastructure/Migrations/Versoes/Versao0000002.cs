@@ -21,7 +21,8 @@ namespace MeuLivroDeReceitas.Infrastructure.Migrations.Versoes
 
             tabela.WithColumn("Titulo").AsString(100).NotNullable()
                   .WithColumn("Categoria").AsInt16().NotNullable()
-                  .WithColumn("ModoPreparo").AsString(5000).NotNullable();
+                  .WithColumn("ModoPreparo").AsString(5000).NotNullable()
+                  .WithColumn("UsuarioId").AsInt64().NotNullable().ForeignKey("FK_Receita_Usuario_Id", "Usuarios", "Id");
         }
 
         private void CriarTabelaIngredientes()

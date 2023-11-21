@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using MeuLivroDeReceitas.Exeptions;
 
-namespace MeuLivroDeReceitas.Application.UserCases.Usuario;
+namespace MeuLivroDeReceitas.Application.UseCases.Usuario;
 
 public class SenhaValidator : AbstractValidator<string>
 {

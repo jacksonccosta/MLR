@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using MeuLivroDeReceitas.Application.UserCases.Usuario;
+using MeuLivroDeReceitas.Application.UseCases.Usuario;
 using MeuLivroDeReceitas.Comunicacao;
 using MeuLivroDeReceitas.Exeptions;
 using System.Text.RegularExpressions;
