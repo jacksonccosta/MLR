@@ -21,8 +21,9 @@ builder.Services.AddApplication(builder.Configuration);
 
 builder.Services.AddMvc(option => option.Filters.Add(typeof(FiltroDasExceptions)));
 
-builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(config => 
-{ 
+//builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
+builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(config =>
+{
     config.AddProfile(new AutoMapperConfig(provider.GetService<IHashids>()));
 }).CreateMapper());
 
