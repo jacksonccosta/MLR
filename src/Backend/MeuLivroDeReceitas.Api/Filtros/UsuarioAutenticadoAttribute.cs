@@ -59,6 +59,6 @@ public class UsuarioAutenticadoAttribute : AuthorizeAttribute, IAsyncAuthorizati
 
     private static void UsuarioNaoAutorizado(AuthorizationFilterContext context)
     {
-        context.Result = new UnauthorizedObjectResult(new RespostaErroJson(ResourceMensagensDeErro.USUARIO_NAO_AUTORIZADO));
+        context.Result = new UnauthorizedObjectResult(new RespostaErroJson(ResourceMensagensDeErro.USUARIO_SEM_PERMISSAO));
     }
 }

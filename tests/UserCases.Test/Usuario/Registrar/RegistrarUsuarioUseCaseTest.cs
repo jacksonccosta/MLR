@@ -33,7 +33,7 @@ public class RegistrarUsuarioUseCaseTest
         Func<Task> acao = async () => { await useCase.Executar(request); };
 
         await acao.Should().ThrowAsync<ErrosDeValidacaoException>()
-             .Where(e => e.MensagensDeErro.Count == 1 && e.MensagensDeErro.Contains(ResourceMensagensDeErro.EMAIL_DUPLICADO));
+             .Where(e => e.MensagensDeErro.Count == 1 && e.MensagensDeErro.Contains(ResourceMensagensDeErro.EMAIL_JA_REGISTRADO));
     }
 
     [Fact]

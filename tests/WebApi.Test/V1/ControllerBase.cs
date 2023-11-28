@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using Xunit;
 using System.Text;
 using MeuLivroDeReceitas.Comunicacao;
-using MeuLivroDeReceitas.Domain;
 using System.Text.Json;
 
 namespace WebApi.Test.V1;
@@ -19,8 +18,11 @@ public class ControllerBase : IClassFixture<MeuLivroDeReceitaWebApplicationFacto
         ResourceMensagensDeErro.Culture = CultureInfo.CurrentCulture;
     }
 
-    protected async Task<HttpResponseMessage> PostRequest(string metodo, object body)
+    protected async Task<HttpResponseMessage> PostRequest(string metodo, object body, string token = "", string cultura = "")
     {
+        AutorizarRequest(token);
+        AlterarCulturaRequisicao(cultura);
+
         var jsonString = JsonConvert.SerializeObject(body);
 
         return await _httpClient.PostAsync(metodo, new StringContent(jsonString, Encoding.UTF8, "application/json"));
@@ -58,5 +60,18 @@ public class ControllerBase : IClassFixture<MeuLivroDeReceitaWebApplicationFacto
     {
         if(!string.IsNullOrWhiteSpace(token))
             _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+    }
+
+    private void AlterarCulturaRequisicao(string cultura)
+    {
+        if (!string.IsNullOrWhiteSpace(cultura))
+        {
+            if (_httpClient.DefaultRequestHeaders.Contains("Accept-Language"))
+            {
+                _httpClient.DefaultRequestHeaders.Remove("Accept-Language");
+            }
+
+            _httpClient.DefaultRequestHeaders.Add("Accept-Language", cultura);
+        }
     }
 }

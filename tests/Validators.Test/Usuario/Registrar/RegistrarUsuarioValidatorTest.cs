@@ -9,7 +9,7 @@ namespace Validators.Test.Usuario.Registrar;
 public class RegistrarUsuarioValidatorTest
 {
     [Fact]
-    public void Validar_Sucessoo()
+    public void Validar_Sucesso()
     {
         var validator = new RegistrarUsuarioValidator();
 
