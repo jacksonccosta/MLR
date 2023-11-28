@@ -50,7 +50,7 @@ public class RegistrarUsuarioUseCase : IRegistrarUsuarioUseCase
         var existeUsuarioComEmail = await _usuarioReadyOnlyRepositorio.ExisteUsuarioComEmail(request.Email);
 
         if (existeUsuarioComEmail)
-            resultado.Errors.Add(new FluentValidation.Results.ValidationFailure("email", ResourceMensagensDeErro.EMAIL_DUPLICADO));
+            resultado.Errors.Add(new FluentValidation.Results.ValidationFailure("email", ResourceMensagensDeErro.EMAIL_JA_REGISTRADO));
 
         if (!resultado.IsValid) 
         {
