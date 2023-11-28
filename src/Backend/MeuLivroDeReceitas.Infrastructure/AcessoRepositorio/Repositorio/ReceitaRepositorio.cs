@@ -1,14 +1,20 @@
 ﻿using MeuLivroDeReceitas.Domain;
+using System.Data.Entity;
 
 namespace MeuLivroDeReceitas.Infrastructure
 {
-    public class ReceitaRepositorio : IReceitaWriteOnlyRepositorio
+    public class ReceitaRepositorio : IReceitaWriteOnlyRepositorio, IReceitaReadOnlyRepositorio
     {
         private readonly MeuLivroDeReceitaContext _contexto;
 
         public ReceitaRepositorio(MeuLivroDeReceitaContext contexto)
         {
             _contexto = contexto;
+        }
+
+        public async Task<List<Receita>> RecuperaReceitasUsuario(long usuarioId)
+        {
+            return await _contexto.Receitas.Where(r => r.UsuarioId == usuarioId).ToListAsync();
         }
 
         public async Task Registrar(Receita receita)
