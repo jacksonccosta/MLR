@@ -12,9 +12,16 @@ namespace MeuLivroDeReceitas.Infrastructure
             _contexto = contexto;
         }
 
+        public async Task<Receita> RecuperaReceitasPorId(long receitaId)
+        {
+            return await _contexto.Receitas.AsNoTracking()
+                .Include(r => r.Ingredientes)
+                .FirstOrDefaultAsync(r => r.Id == receitaId);
+        }
+
         public async Task<List<Receita>> RecuperaReceitasUsuario(long usuarioId)
         {
-            return await _contexto.Receitas
+            return await _contexto.Receitas.AsNoTracking()
                 .Include(r => r.Ingredientes)
                 .Where(r => r.UsuarioId == usuarioId).ToListAsync();
         }
