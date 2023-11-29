@@ -48,6 +48,7 @@ public static class Bootstrapper
                 .AddScoped<ILoginUseCase, LoginUseCase>()
                 .AddScoped<IAlterarSenhaUseCase, AlterarSenhaUseCase>()
                 .AddScoped<IRegistrarReceitaUseCase, RegistrarReceitaUseCase>()
-                .AddScoped<IDashboardUseCase, DashboardUseCase>();
+                .AddScoped<IDashboardUseCase, DashboardUseCase>()
+                .AddScoped<IRecuperarReceitaPorId, RecuperarReceitaPorId>();
     }
 }
