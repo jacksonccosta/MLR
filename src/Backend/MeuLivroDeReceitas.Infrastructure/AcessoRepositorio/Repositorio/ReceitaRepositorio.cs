@@ -1,5 +1,5 @@
 ﻿using MeuLivroDeReceitas.Domain;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace MeuLivroDeReceitas.Infrastructure
 {
@@ -19,7 +19,7 @@ namespace MeuLivroDeReceitas.Infrastructure
                 .FirstOrDefaultAsync(r => r.Id == receitaId);
         }
 
-        public async Task<List<Receita>> RecuperaReceitasUsuario(long usuarioId)
+        public async Task<IList<Receita>> RecuperaReceitasUsuario(long usuarioId)
         {
             return await _contexto.Receitas.AsNoTracking()
                 .Include(r => r.Ingredientes)

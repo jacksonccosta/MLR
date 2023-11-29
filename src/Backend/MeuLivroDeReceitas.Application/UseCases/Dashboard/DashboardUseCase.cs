@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MeuLivroDeReceitas.Comunicacao;
 using MeuLivroDeReceitas.Domain;
-using System.Security.AccessControl;
 
 namespace MeuLivroDeReceitas.Application;
 
@@ -22,7 +21,7 @@ public class DashboardUseCase : IDashboardUseCase
     {
         var usuarioLogado = await _usuarioLogado.RecuperarUsuario();
         var receitas = await _repositorio.RecuperaReceitasUsuario(usuarioLogado.Id);
-        receitas = (List<Receita>)Filtrar(request, receitas);
+        receitas = Filtrar(request, receitas);
 
         return new ResponseDashboardJson
         {
@@ -31,7 +30,7 @@ public class DashboardUseCase : IDashboardUseCase
 
     }
 
-    private static IList<Receita> Filtrar(RequestDashboardJson request, IList<Receita> receitas)
+    private static IList<Domain.Receita> Filtrar(RequestDashboardJson request, IList<Receita> receitas)
     {
         var receitasFiltradas = receitas;
 
@@ -40,6 +39,6 @@ public class DashboardUseCase : IDashboardUseCase
         if (!string.IsNullOrWhiteSpace(request.TituloOuIngrediente)) 
             receitasFiltradas = receitas.Where(r => r.Titulo.Contains(request.TituloOuIngrediente) || r.Ingredientes.Any(ingrediente => ingrediente.Produto.Contains(request.TituloOuIngrediente))).ToList();
 
-        return receitasFiltradas;
+        return receitasFiltradas.OrderBy(c => c.Titulo).ToList();
     }
 }

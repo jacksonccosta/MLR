@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MeuLivroDeReceitas.Domain.Entidades;
+namespace MeuLivroDeReceitas.Domain;
 
 [Table("Ingredientes")]
 public class Ingrediente : EntidadeBase

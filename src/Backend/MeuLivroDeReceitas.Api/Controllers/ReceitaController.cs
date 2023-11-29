@@ -15,8 +15,18 @@ public class ReceitaController : MlrController
         [FromBody] RequestRegistrarReceitaJson request)
     {
         var response = await useCase.Executar(request);
-
         return Created(string.Empty, response);
+    }
+
+    [HttpGet]
+    [Route("{id:hashids}")]
+    [ProducesResponseType(typeof(ResponseReceitaJson), StatusCodes.Status200OK)]
+    public async Task<IActionResult> RecuperarPorId(
+        [FromServices] IRecuperarReceitaPorIdUseCase useCase,
+        [FromRoute] [ModelBinder(typeof(HashidsModelBinder))] long id)
+    {
+        var response = await useCase.Executar(id);
+        return Ok(response);
     }
 }
 
