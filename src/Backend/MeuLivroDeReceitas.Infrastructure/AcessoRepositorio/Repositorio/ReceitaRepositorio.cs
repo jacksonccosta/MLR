@@ -14,7 +14,9 @@ namespace MeuLivroDeReceitas.Infrastructure
 
         public async Task<List<Receita>> RecuperaReceitasUsuario(long usuarioId)
         {
-            return await _contexto.Receitas.Where(r => r.UsuarioId == usuarioId).ToListAsync();
+            return await _contexto.Receitas
+                .Include(r => r.Ingredientes)
+                .Where(r => r.UsuarioId == usuarioId).ToListAsync();
         }
 
         public async Task Registrar(Receita receita)
