@@ -2,7 +2,7 @@
 
 namespace MeuLivroDeReceitas.Application;
 
-public interface IRecuperarReceitaPorId
+public interface IRecuperarReceitaPorIdUseCase
 {
     Task<ResponseReceitaJson> Executar(long id);
 }

@@ -5,13 +5,13 @@ using MeuLivroDeReceitas.Exeptions;
 
 namespace MeuLivroDeReceitas.Application;
 
-public class RecuperarReceitaPorId : IRecuperarReceitaPorId
+public class RecuperarReceitaPorIdUseCase : IRecuperarReceitaPorIdUseCase
 {
     private readonly IMapper _mapper;
     private readonly IUsuarioLogado _usuarioLogado;
     private readonly IReceitaReadOnlyRepositorio _repositorio;
 
-    public RecuperarReceitaPorId(IMapper mapper, IUsuarioLogado usuarioLogado, IReceitaReadOnlyRepositorio repositorio)
+    public RecuperarReceitaPorIdUseCase(IMapper mapper, IUsuarioLogado usuarioLogado, IReceitaReadOnlyRepositorio repositorio)
     {
         _mapper = mapper;
         _usuarioLogado = usuarioLogado;

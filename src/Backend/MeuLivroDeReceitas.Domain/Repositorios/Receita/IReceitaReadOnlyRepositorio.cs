@@ -2,6 +2,6 @@
 
 public interface IReceitaReadOnlyRepositorio
 {
-    Task<List<Receita>> RecuperaReceitasUsuario(long usuarioId);
+    Task<IList<Receita>> RecuperaReceitasUsuario(long usuarioId);
     Task<Receita> RecuperaReceitasPorId(long receitaId);
 }
