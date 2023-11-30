@@ -1,14 +1,14 @@
 ﻿namespace MeuLivroDeReceitas.Comunicacao
 {
-    public class RequestRegistrarReceitaJson
+    public class RequestReceitaJson
     {
-        public RequestRegistrarReceitaJson()
+        public RequestReceitaJson()
         {
             Ingredientes = new();
         }
         public string Titulo { get; set; }
         public TipoCategoria Categoria { get; set; }
         public string ModoPreparo { get; set; }
-        public List<RequestRegistrarIngredienteJson> Ingredientes { get; set; }
+        public List<RequestIngredienteJson> Ingredientes { get; set; }
     }
 }

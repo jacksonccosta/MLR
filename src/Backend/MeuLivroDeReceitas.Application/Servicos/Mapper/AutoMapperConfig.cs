@@ -2,6 +2,7 @@
 using HashidsNet;
 using MeuLivroDeReceitas.Comunicacao;
 using MeuLivroDeReceitas.Domain;
+using MeuLivroDeReceitas.Domain.Entidades;
 
 namespace MeuLivroDeReceitas.Application;
 
@@ -21,8 +22,8 @@ public class AutoMapperConfig : Profile
     {
         CreateMap<RequestRegistrarUsuarioJson, Usuario>()
             .ForMember(destino => destino.Senha, config => config.Ignore());
-        CreateMap<RequestRegistrarReceitaJson, Receita>();
-        CreateMap<RequestRegistrarIngredienteJson, Ingrediente>();
+        CreateMap<RequestReceitaJson, Receita>();
+        CreateMap<RequestIngredienteJson, Ingrediente>();
     }
 
     private void EntityToResponse()

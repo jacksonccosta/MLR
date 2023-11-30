@@ -5,7 +5,7 @@ using MeuLivroDeReceitas.Exeptions;
 
 namespace MeuLivroDeReceitas.Application
 {
-    public class RegistrarReceitaValidator : AbstractValidator<RequestRegistrarReceitaJson>
+    public class RegistrarReceitaValidator : AbstractValidator<RequestReceitaJson>
     {
         public RegistrarReceitaValidator()
         {

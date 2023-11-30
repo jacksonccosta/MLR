@@ -4,6 +4,6 @@ namespace MeuLivroDeReceitas.Application
 {
     public interface IRegistrarReceitaUseCase
     {
-        Task<ResponseReceitaJson> Executar(RequestRegistrarReceitaJson request);
+        Task<ResponseReceitaJson> Executar(RequestReceitaJson request);
     }
 }

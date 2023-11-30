@@ -12,7 +12,7 @@ public class ReceitaController : MlrController
     [ProducesResponseType(typeof(ResponseReceitaJson), StatusCodes.Status201Created)]
     public async Task<IActionResult> Registrar(
         [FromServices] IRegistrarReceitaUseCase useCase, 
-        [FromBody] RequestRegistrarReceitaJson request)
+        [FromBody] RequestReceitaJson request)
     {
         var response = await useCase.Executar(request);
         return Created(string.Empty, response);
