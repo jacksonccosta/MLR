@@ -2,7 +2,6 @@
 using HashidsNet;
 using MeuLivroDeReceitas.Comunicacao;
 using MeuLivroDeReceitas.Domain;
-using MeuLivroDeReceitas.Domain.Entidades;
 
 namespace MeuLivroDeReceitas.Application;
 
