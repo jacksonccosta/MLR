@@ -20,7 +20,7 @@ public class RegistrarReceitaUseCase : IRegistrarReceitaUseCase
         _repositorio = repositorio;
     }
 
-    public async Task<ResponseReceitaJson> Executar(RequestRegistrarReceitaJson request)
+    public async Task<ResponseReceitaJson> Executar(RequestReceitaJson request)
     {
         Validar(request);
         var usuarioLogado = await _usuarioLogado.RecuperarUsuario();
@@ -33,7 +33,7 @@ public class RegistrarReceitaUseCase : IRegistrarReceitaUseCase
         return _mapper.Map<ResponseReceitaJson>(receita);
     }
 
-    private void Validar(RequestRegistrarReceitaJson request)
+    private void Validar(RequestReceitaJson request)
     {
         var validador = new RegistrarReceitaValidator();
         var result = validador.Validate(request);
