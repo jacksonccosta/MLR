@@ -24,15 +24,24 @@ public class AtualizaReceitaUseCase : IAtualizaReceitaUseCase
     {
         var usuarioLogado = await _usuarioLogado.RecuperarUsuario();
         var receita = await _repositorio.RecuperaReceitasPorId(id);
-        Validar(usuarioLogado, receita);
+        Validar(usuarioLogado, receita, request);
         _mapper.Map(request, receita);
         _repositorio.Update(receita);
         await _unidadeDeTrabalho.Commit();
     }
 
-    private static void Validar(Usuario usuarioLogado, Receita receita)
+    private static void Validar(Usuario usuarioLogado, Receita receita, RequestReceitaJson request)
     {
         if (receita == null || receita.UsuarioId != usuarioLogado.Id)
             throw new ErrosDeValidacaoException(new List<string>() { ResourceMensagensDeErro.RECEITA_NAO_ENCONTRADA });
+
+        var validador = new AtualizarReceitaValidator();
+        var result = validador.Validate(request);
+
+        if (!result.IsValid)
+        {
+            var mensagensDeErro = result.Errors.Select(m => m.ErrorMessage).ToList();
+            throw new ErrosDeValidacaoException(mensagensDeErro);
+        }
     }
 }

@@ -28,5 +28,17 @@ public class ReceitaController : MlrController
         var response = await useCase.Executar(id);
         return Ok(response);
     }
+
+    [HttpPut]
+    [Route("{id:hashids}")]
+    [ProducesResponseType(typeof(ResponseReceitaJson), StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> Atualizar(
+        [FromServices] IAtualizaReceitaUseCase useCase,
+        [FromBody] RequestReceitaJson request,
+        [FromRoute][ModelBinder(typeof(HashidsModelBinder))] long id)
+    {
+        await useCase.Executar(id, request);
+        return NoContent();
+    }
 }
 
