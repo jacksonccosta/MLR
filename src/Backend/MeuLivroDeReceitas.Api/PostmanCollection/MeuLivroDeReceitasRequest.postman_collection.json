@@ -427,6 +427,56 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Atualizar Receita",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Atualizou Receita com sucesso\", function(){\r",
+							"    pm.response.to.have.status(204);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titulo\": \"{{$randomJobTitle}}\",\r\n  \"categoria\": 1,\r\n  \"modoPreparo\": \"{{$randomLoremParagraph}}\",\r\n  \"ingredientes\": [\r\n    {\r\n      \"produto\": \"{{$randomProduct}}\",\r\n      \"quantidade\": \"{{$randomIngverb}}\"\r\n    },\r\n    {\r\n      \"produto\": \"{{$randomProduct}}\",\r\n      \"quantidade\": \"{{$randomIngverb}}\"\r\n    },\r\n    {\r\n      \"produto\": \"{{$randomProduct}}\",\r\n      \"quantidade\": \"{{$randomIngverb}}\"\r\n    },\r\n    {\r\n      \"produto\": \"{{$randomProduct}}\",\r\n      \"quantidade\": \"{{$randomIngverb}}\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URLBASE}}/receita/{{ID_RECEITA}}",
+					"host": [
+						"{{URLBASE}}"
+					],
+					"path": [
+						"receita",
+						"{{ID_RECEITA}}"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
