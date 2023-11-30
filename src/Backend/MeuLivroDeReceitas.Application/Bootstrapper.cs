@@ -50,6 +50,7 @@ public static class Bootstrapper
                 .AddScoped<IRegistrarReceitaUseCase, RegistrarReceitaUseCase>()
                 .AddScoped<IDashboardUseCase, DashboardUseCase>()
                 .AddScoped<IRecuperarReceitaPorIdUseCase, RecuperarReceitaPorIdUseCase>()
-                .AddScoped<IAtualizaReceitaUseCase, AtualizaReceitaUseCase>();
+                .AddScoped<IAtualizaReceitaUseCase, AtualizaReceitaUseCase>()
+                .AddScoped<IDeletaReceitaUseCase, DeletaReceitaUseCase>();
     }
 }
