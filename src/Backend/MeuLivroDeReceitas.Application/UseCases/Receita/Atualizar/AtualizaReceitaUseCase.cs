@@ -32,7 +32,7 @@ public class AtualizaReceitaUseCase : IAtualizaReceitaUseCase
 
     private static void Validar(Usuario usuarioLogado, Receita receita, RequestReceitaJson request)
     {
-        if (receita == null || receita.UsuarioId != usuarioLogado.Id)
+        if (receita is null || receita.UsuarioId != usuarioLogado.Id)
             throw new ErrosDeValidacaoException(new List<string>() { ResourceMensagensDeErro.RECEITA_NAO_ENCONTRADA });
 
         var validador = new AtualizarReceitaValidator();
