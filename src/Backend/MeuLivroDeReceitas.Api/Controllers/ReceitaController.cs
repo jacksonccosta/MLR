@@ -40,5 +40,17 @@ public class ReceitaController : MlrController
         await useCase.Executar(id, request);
         return NoContent();
     }
+
+    [HttpDelete]
+    [Route("{id:hashids}")]
+    [ProducesResponseType(typeof(ResponseReceitaJson), StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> Deletar(
+        [FromServices] IDeletaReceitaUseCase useCase,
+        [FromBody] RequestReceitaJson request,
+        [FromRoute][ModelBinder(typeof(HashidsModelBinder))] long id)
+    {
+        await useCase.Executar(id);
+        return NoContent();
+    }
 }
 

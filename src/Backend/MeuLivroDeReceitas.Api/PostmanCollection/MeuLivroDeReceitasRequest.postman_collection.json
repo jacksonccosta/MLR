@@ -477,6 +477,47 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Deletar receita",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Atualizou Receita com sucesso\", function(){\r",
+							"    pm.response.to.have.status(204);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URLBASE}}/receita/{{ID_RECEITA}}",
+					"host": [
+						"{{URLBASE}}"
+					],
+					"path": [
+						"receita",
+						"{{ID_RECEITA}}"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
