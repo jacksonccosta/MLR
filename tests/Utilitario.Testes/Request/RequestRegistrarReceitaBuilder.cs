@@ -11,8 +11,8 @@ public class RequestRegistrarReceitaBuilder
             .RuleFor(c => c.Titulo, f => f.Commerce.Department())
             .RuleFor(c => c.Categoria, f => f.PickRandom<TipoCategoria>())
             .RuleFor(c => c.ModoPreparo, f => f.Lorem.Paragraph())
-            .RuleFor(c => c.Ingredientes, f => RandomIngredientes(f));
-            //.RuleFor(c => c.TempoPreparo, f => f.Random.Int(1, 1000));
+            .RuleFor(c => c.Ingredientes, f => RandomIngredientes(f))
+            .RuleFor(c => c.TempoPreparo, f => f.Random.Int(1, 1000));
     }
 
     private static List<RequestIngredienteJson> RandomIngredientes(Faker f)
