@@ -23,15 +23,15 @@ public class ReceitaController : MlrController
     [ProducesResponseType(typeof(ResponseReceitaJson), StatusCodes.Status200OK)]
     public async Task<IActionResult> RecuperarPorId(
         [FromServices] IRecuperarReceitaPorIdUseCase useCase,
-        [FromRoute] [ModelBinder(typeof(HashidsModelBinder))] long id)
+        [FromRoute][ModelBinder(typeof(HashidsModelBinder))] long id)
     {
-        var response = await useCase.Executar(id);
-        return Ok(response);
+        var resposta = await useCase.Executar(id);
+        return Ok(resposta);
     }
 
     [HttpPut]
     [Route("{id:hashids}")]
-    [ProducesResponseType(typeof(ResponseReceitaJson), StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> Atualizar(
         [FromServices] IAtualizaReceitaUseCase useCase,
         [FromBody] RequestReceitaJson request,
@@ -43,10 +43,9 @@ public class ReceitaController : MlrController
 
     [HttpDelete]
     [Route("{id:hashids}")]
-    [ProducesResponseType(typeof(ResponseReceitaJson), StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> Deletar(
         [FromServices] IDeletaReceitaUseCase useCase,
-        [FromBody] RequestReceitaJson request,
         [FromRoute][ModelBinder(typeof(HashidsModelBinder))] long id)
     {
         await useCase.Executar(id);

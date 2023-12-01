@@ -15,6 +15,7 @@ public class UsuarioController : MlrController
 
         return Created(string.Empty, result);
     }
+
     [HttpPut]
     [Route("alterar-senha")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -26,5 +27,15 @@ public class UsuarioController : MlrController
         await useCase.Executar(request);
 
         return NoContent();
+    }
+
+    [HttpGet]
+    [ProducesResponseType(typeof(ResponsePerfilUsuarioJson), StatusCodes.Status200OK)]
+    [ServiceFilter(typeof(UsuarioAutenticadoAttribute))]
+    public async Task<IActionResult> RecuperarPerfil(
+        [FromServices] IRecuperarPerfilUsuarioUseCase useCase)
+    {
+        var resultado = await useCase.Executar();
+        return Ok(resultado);
     }
 }

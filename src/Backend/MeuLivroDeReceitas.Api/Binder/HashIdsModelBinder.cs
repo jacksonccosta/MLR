@@ -9,40 +9,32 @@ public class HashidsModelBinder : IModelBinder
 
     public HashidsModelBinder(IHashids hashids)
     {
-        this.hashids = hashids ?? throw new System.ArgumentNullException(nameof(hashids));
+        this.hashids = hashids ?? throw new ArgumentNullException(nameof(hashids));
     }
 
     public Task BindModelAsync(ModelBindingContext bindingContext)
     {
         if (bindingContext is null)
-        {
             throw new System.ArgumentNullException(nameof(bindingContext));
-        }
 
         var modelName = bindingContext.ModelName;
 
         var valueProviderResult = bindingContext.ValueProvider.GetValue(modelName);
 
         if (valueProviderResult == ValueProviderResult.None)
-        {
             return Task.CompletedTask;
-        }
 
         bindingContext.ModelState.SetModelValue(modelName, valueProviderResult);
 
         var value = valueProviderResult.FirstValue;
 
         if (string.IsNullOrEmpty(value))
-        {
             return Task.CompletedTask;
-        }
 
-        var ids = hashids.Decode(value);
+        var ids = hashids.DecodeLong(value);
 
         if (ids.Length == 0)
-        {
             return Task.CompletedTask;
-        }
 
         bindingContext.Result = ModelBindingResult.Success(ids.First());
 
