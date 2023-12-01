@@ -22,7 +22,7 @@ public class LoginUseCase : ILoginUseCase
 
         var usuario = await _usuarioReadyOnlyRepositorio.Login(request.Email, senhaCriptografada);
 
-        if(usuario == null)
+        if(usuario is null)
             throw new LoginInvalidoException();
 
         return new ResponseLoginJson

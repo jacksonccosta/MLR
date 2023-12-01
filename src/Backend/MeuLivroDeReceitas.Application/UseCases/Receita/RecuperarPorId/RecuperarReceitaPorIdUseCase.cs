@@ -30,7 +30,7 @@ public class RecuperarReceitaPorIdUseCase : IRecuperarReceitaPorIdUseCase
 
     private static void Validar(Usuario usuarioLogado, Receita receita)
     {
-        if (receita == null || receita.UsuarioId != usuarioLogado.Id)
+        if (receita is null || receita.UsuarioId != usuarioLogado.Id)
             throw new ErrosDeValidacaoException(new List<string>() { ResourceMensagensDeErro.RECEITA_NAO_ENCONTRADA});
     }
 }
