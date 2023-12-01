@@ -1,21 +1,20 @@
 ﻿using FluentMigrator;
 
-namespace MeuLivroDeReceitas.Infrastructure
+namespace MeuLivroDeReceitas.Infrastructure;
+
+[Migration((long)NumVersoes.CriarTabelaUsuario, "Cria tabela de Usario")]
+public class Versao0000001 : Migration
 {
-    [Migration((long)NumVersoes.CriarTabelaUsuario, "Cria tabela de Usario")]
-    public class Versao0000001 : Migration
+    public override void Down()
+    {}
+
+    public override void Up()
     {
-        public override void Down()
-        {}
+        var tabela = VersaoBase.InserirColunasPadrao(Create.Table("Usuarios"));
 
-        public override void Up()
-        {
-            var tabela = VersaoBase.InserirColunasPadrao(Create.Table("Usuarios"));
-
-            tabela.WithColumn("Nome").AsString(100).NotNullable()
-                  .WithColumn("Email").AsString().NotNullable()
-                  .WithColumn("Senha").AsString(3000).NotNullable()
-                  .WithColumn("Telefone").AsString(14).NotNullable();
-        }
+        tabela.WithColumn("Nome").AsString(100).NotNullable()
+              .WithColumn("Email").AsString().NotNullable()
+              .WithColumn("Senha").AsString(3000).NotNullable()
+              .WithColumn("Telefone").AsString(14).NotNullable();
     }
 }

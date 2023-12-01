@@ -3,6 +3,7 @@
     public enum NumVersoes
     {
         CriarTabelaUsuario = 1,
-        CriarTabelaReceita = 2
+        CriarTabelaReceita = 2,
+        AlterarTabelaReceitas = 3
     }
 }
