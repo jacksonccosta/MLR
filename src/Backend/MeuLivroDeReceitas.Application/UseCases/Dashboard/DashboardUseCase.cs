@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MeuLivroDeReceitas.Comunicacao;
 using MeuLivroDeReceitas.Domain;
+using MeuLivroDeReceitas.Domain.Extension;
 
 namespace MeuLivroDeReceitas.Application;
 
@@ -37,7 +38,7 @@ public class DashboardUseCase : IDashboardUseCase
         if (request.Categoria.HasValue)
             receitasFiltradas = receitas.Where(r => r.Categoria == (Domain.TipoCategoria)request.Categoria.Value).ToList();
         if (!string.IsNullOrWhiteSpace(request.TituloOuIngrediente)) 
-            receitasFiltradas = receitas.Where(r => r.Titulo.Contains(request.TituloOuIngrediente) || r.Ingredientes.Any(ingrediente => ingrediente.Produto.Contains(request.TituloOuIngrediente))).ToList();
+            receitasFiltradas = receitas.Where(r => r.Titulo.CompararSemConsiderarAcentoUpperCase(request.TituloOuIngrediente) || r.Ingredientes.Any(ingrediente => ingrediente.Produto.CompararSemConsiderarAcentoUpperCase(request.TituloOuIngrediente))).ToList();
 
         return receitasFiltradas.OrderBy(c => c.Titulo).ToList();
     }
