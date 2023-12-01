@@ -31,7 +31,8 @@ namespace MeuLivroDeReceitas.Infrastructure.Migrations.Versoes
 
             tabela.WithColumn("Produto").AsString(100).NotNullable()
                   .WithColumn("Quantidade").AsString(100).NotNullable()
-                  .WithColumn("ReceitaId").AsInt64().NotNullable().ForeignKey("FK_Ingrediente_Receita_Id", "Receitas", "Id");
+                  .WithColumn("ReceitaId").AsInt64().NotNullable().ForeignKey("FK_Ingrediente_Receita_Id", "Receitas", "Id")
+                    .OnDeleteOrUpdate(System.Data.Rule.Cascade);
         }
     }
 }
