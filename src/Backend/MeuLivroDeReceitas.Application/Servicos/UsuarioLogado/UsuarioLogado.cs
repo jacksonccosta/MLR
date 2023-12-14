@@ -19,10 +19,8 @@ public class UsuarioLogado : IUsuarioLogado
     public async Task<Usuario> RecuperarUsuario()
     {
         var authorization =  _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString();
-
         var token = authorization["Bearer".Length..].Trim();
         var emailUsuario = _tokenController.RecuperarEmail(token);
-
         var usuario = await _repositorio.RecuperarPorEmail(emailUsuario);
 
         return usuario;
