@@ -1,4 +1,3 @@
-using MeuLivroDeReceitas.Api.Filtros;
 using MeuLivroDeReceitas.Application;
 using MeuLivroDeReceitas.Comunicacao;
 using Microsoft.AspNetCore.Mvc;

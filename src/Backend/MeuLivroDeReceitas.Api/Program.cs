@@ -1,10 +1,11 @@
 using HashidsNet;
 using MeuLivroDeReceitas.Api;
-using MeuLivroDeReceitas.Api.Filtros;
 using MeuLivroDeReceitas.Api.Middleware;
+using MeuLivroDeReceitas.Api.WebSockets;
 using MeuLivroDeReceitas.Application;
 using MeuLivroDeReceitas.Domain;
 using MeuLivroDeReceitas.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -54,7 +55,14 @@ builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(config
     config.AddProfile(new AutoMapperConfig(provider.GetService<IHashids>()));
 }).CreateMapper());
 
+builder.Services.AddScoped<IAuthorizationHandler, UsuarioLogadoHandler>();
+builder.Services.AddAuthorization(option =>
+{
+    option.AddPolicy("UsuarioLogado", policy => policy.Requirements.Add(new UsuarioLogadoRequirement()));
+});
 builder.Services.AddScoped<UsuarioAutenticadoAttribute>();
+
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -72,6 +80,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 AtualizarBaseDeDados();
+
+app.MapHub<AdicionarConexao>("/addConexao");
 
 app.Run();
 
