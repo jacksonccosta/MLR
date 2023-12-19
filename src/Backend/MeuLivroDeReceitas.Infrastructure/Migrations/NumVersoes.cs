@@ -4,6 +4,7 @@
     {
         CriarTabelaUsuario = 1,
         CriarTabelaReceita = 2,
-        AlterarTabelaReceitas = 3
+        AlterarTabelaReceitas = 3,
+        CriarTabelasAssociacaoUsuario = 4
     }
 }

@@ -52,6 +52,7 @@ public static class Bootstrapper
                 .AddScoped<IRecuperarReceitaPorIdUseCase, RecuperarReceitaPorIdUseCase>()
                 .AddScoped<IAtualizaReceitaUseCase, AtualizaReceitaUseCase>()
                 .AddScoped<IDeletaReceitaUseCase, DeletaReceitaUseCase>()
-                .AddScoped<IRecuperarPerfilUsuarioUseCase, RecuperarPerfilUsuarioUseCase>();
+                .AddScoped<IRecuperarPerfilUsuarioUseCase, RecuperarPerfilUsuarioUseCase>()
+                .AddScoped<IGerarQRCodeUseCase, GerarQRCodeUseCase>();
     }
 }
