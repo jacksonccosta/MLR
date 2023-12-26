@@ -1,6 +1,5 @@
 ﻿using MeuLivroDeReceitas.Domain;
 using Microsoft.EntityFrameworkCore;
-using System.Configuration;
 
 namespace MeuLivroDeReceitas.Infrastructure;
 
@@ -11,6 +10,7 @@ public class MeuLivroDeReceitaContext : DbContext
     public DbSet<Usuario> Usuarios { get; set; }
     public DbSet<Receita> Receitas { get; set; }
     public DbSet<Codigos> Codigos { get; set; }
+    public DbSet<Conexoes> Conexoes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

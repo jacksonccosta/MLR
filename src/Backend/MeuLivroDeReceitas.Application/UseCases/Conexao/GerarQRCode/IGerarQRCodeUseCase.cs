@@ -2,5 +2,5 @@
 
 public interface IGerarQRCodeUseCase
 {
-    Task<string> Executar();
+    Task<(string qrCode, string idUsuario)> Executar();
 }
