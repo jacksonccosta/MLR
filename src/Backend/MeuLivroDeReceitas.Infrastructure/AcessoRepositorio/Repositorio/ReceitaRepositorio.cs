@@ -33,6 +33,13 @@ namespace MeuLivroDeReceitas.Infrastructure
                 .Where(r => r.UsuarioId == usuarioId).ToListAsync();
         }
 
+        public async Task<IList<Receita>> RecuperaReceitasTodosUsuarios(List<long> usuarioIds)
+        {
+            return await _contexto.Receitas.AsNoTracking()
+                .Include(r => r.Ingredientes)
+                .Where(r => usuarioIds.Contains(r.UsuarioId)).ToListAsync();
+        }
+
         public async Task Registrar(Receita receita)
         {
             await _contexto.Receitas.AddAsync(receita);
@@ -47,6 +54,11 @@ namespace MeuLivroDeReceitas.Infrastructure
         {
             var receita = await _contexto.Receitas.FirstOrDefaultAsync(r => r.Id == receitaId);
             _contexto.Receitas.Remove(receita);
+        }
+
+        public async Task<int> QuantidadeDeReceitas(long usuarioId)
+        {
+            return await _contexto.Receitas.CountAsync(r => r.UsuarioId == usuarioId);
         }
     }
 }
