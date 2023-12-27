@@ -6,6 +6,8 @@ using MeuLivroDeReceitas.Application;
 using MeuLivroDeReceitas.Domain;
 using MeuLivroDeReceitas.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -64,7 +66,19 @@ builder.Services.AddScoped<UsuarioAutenticadoAttribute>();
 
 builder.Services.AddSignalR();
 
+builder.Services.AddHealthChecks().AddDbContextCheck<MeuLivroDeReceitaContext>();
+
 var app = builder.Build();
+
+app.MapHealthChecks("/health", new HealthCheckOptions
+{
+    AllowCachingResponses = false,
+    ResultStatusCodes =
+    {
+        [HealthStatus.Healthy] = StatusCodes.Status200OK,
+        [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
+    }
+});
 
 if (app.Environment.IsDevelopment())
 {
