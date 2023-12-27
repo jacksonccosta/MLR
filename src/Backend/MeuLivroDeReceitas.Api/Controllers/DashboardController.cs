@@ -5,12 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MeuLivroDeReceitas.Api;
 
+[ServiceFilter(typeof(UsuarioAutenticadoAttribute))]
 public class DashboardController : MlrController
 {
     [HttpPut]
     [ProducesResponseType(typeof(ResponseDashboardJson),StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ServiceFilter(typeof(UsuarioAutenticadoAttribute))]
+    
     public async Task<IActionResult> RecuperaDashboard(
         [FromServices] IDashboardUseCase useCase,
         [FromBody] RequestDashboardJson request)

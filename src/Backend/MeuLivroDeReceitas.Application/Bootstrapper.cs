@@ -56,6 +56,8 @@ public static class Bootstrapper
                 .AddScoped<IGerarQRCodeUseCase, GerarQRCodeUseCase>()
                 .AddScoped<IReadQRCodeUseCase, ReadQRCodeUseCase>()
                 .AddScoped<IRecusarConexaoUseCase, RecusarConexaoUseCase>()
-                .AddScoped<IAceitarConexaoUseCase, AceitarConexaoUseCase>();
+                .AddScoped<IAceitarConexaoUseCase, AceitarConexaoUseCase>()
+                .AddScoped<IRecuperarTodasAsConexoesUseCase, RecuperarTodasAsConexoesUseCase>()
+                .AddScoped<IRemoverConexaoUseCase, RemoverConexaoUseCase>();
     }
 }
