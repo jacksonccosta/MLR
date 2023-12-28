@@ -7,15 +7,19 @@ namespace MeuLivroDeReceitas.Infrastructure
     {
         public static void CriarDatabase(string connectionStrings, string nomeDatabase)
         {
-           using var minhaConexao = new MySqlConnection(connectionStrings);
+            using var minhaConexao = new MySqlConnection(connectionStrings);
 
-            var param = new DynamicParameters(nomeDatabase);
+            var param = new DynamicParameters();
             param.Add("nome", nomeDatabase);
 
             var registros = minhaConexao.Query("SELECT * FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = @nome", param);
 
             if (!registros.Any())
-                minhaConexao.Execute($"CREATE DATABASE {nomeDatabase}");
+            {
+                // Utilizando parâmetros nomeados para evitar SQL injection
+                string sql = $"CREATE DATABASE `{nomeDatabase}`";
+                minhaConexao.Execute(sql);
+            }
         }
     }
 }

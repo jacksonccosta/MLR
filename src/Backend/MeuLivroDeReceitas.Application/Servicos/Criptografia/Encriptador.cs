@@ -5,16 +5,16 @@ namespace MeuLivroDeReceitas.Application;
 
 public class Encriptador
 {
-    private readonly string _chaveDeEncriptacaor;
+    private readonly string _chaveAdicional;
 
-    public Encriptador(string chaveDeEncriptacaor)
+    public Encriptador(string chaveAdicional)
     {
-        _chaveDeEncriptacaor = chaveDeEncriptacaor;
+        _chaveAdicional = chaveAdicional;
     }
 
     public string Criptografar(string senha)
     {
-        var senhaComChave = $"{senha}{_chaveDeEncriptacaor}";
+        var senhaComChave = $"{senha}{_chaveAdicional}";
 
         var bytes = Encoding.UTF8.GetBytes(senhaComChave);
         var sha512 = SHA512.Create();

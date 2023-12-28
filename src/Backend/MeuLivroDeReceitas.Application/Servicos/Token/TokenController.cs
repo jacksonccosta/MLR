@@ -37,7 +37,7 @@ public class TokenController
         return tokenHandler.WriteToken(securityToken);
     }
 
-    public void ValidarToken(string token)
+    public ClaimsPrincipal ValidarToken(string token)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -50,12 +50,21 @@ public class TokenController
             ValidateAudience = false,
         };
 
-        tokenHandler.ValidateToken(token, paramValidacao, out _);
+        var claims = tokenHandler.ValidateToken(token, paramValidacao, out _);
+
+        return claims;
     }
 
     private SymmetricSecurityKey SimmetricKey()
     {
         var symmetricKey = Convert.FromBase64String(_chaveDeSeguranca);
         return new SymmetricSecurityKey(symmetricKey);
+    }
+
+    public string RecuperarEmail(string token)
+    {
+        var claims = ValidarToken(token);
+
+        return claims.FindFirst(EmailAlias).Value;
     }
 }
