@@ -1,5 +1,7 @@
 ﻿using HashidsNet;
 using MeuLivroDeReceitas.Domain;
+using QRCoder;
+using System.Drawing;
 
 namespace MeuLivroDeReceitas.Application;
 
@@ -17,7 +19,7 @@ public class GerarQRCodeUseCase : IGerarQRCodeUseCase
         _unidadeDeTrabalho = unidadeDeTrabalho;
         _hashIds = hashids;
     }
-    public async Task<(string qrCode, string idUsuario)> Executar()
+    public async Task<(byte[] qrCode, string idUsuario)> Executar()
     {
         var usuarioLogado = await _usuarioLogado.RecuperarUsuario();
         var codigo = new Codigos
@@ -28,6 +30,18 @@ public class GerarQRCodeUseCase : IGerarQRCodeUseCase
         await _repositorio.Registrar(codigo);
         await _unidadeDeTrabalho.Commit();
 
-        return (codigo.Codigo, _hashIds.EncodeLong(usuarioLogado.Id));
+        return (GerarImagemQRCode(codigo.Codigo), _hashIds.EncodeLong(usuarioLogado.Id));
+    }
+
+    private static byte[] GerarImagemQRCode(string codigo)
+    {
+        var qrCodeGenerator = new QRCodeGenerator();
+        var qrCodeData = qrCodeGenerator.CreateQrCode(codigo, QRCodeGenerator.ECCLevel.Q);
+        var qrCode = new QRCode(qrCodeData);
+        var bitmap =  qrCode.GetGraphic(5, Color.Black, Color.Transparent, true);
+
+        using var stream = new MemoryStream();
+        bitmap.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+        return stream.ToArray();
     }
 }
