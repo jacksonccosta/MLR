@@ -2,30 +2,6 @@
 ![Stargazers][stars-shield]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-<details open="open">
-  <summary>Conteudo</summary>
-  <ol>
-    <li>
-      <a href="#sobre-o-projeto">Sobre o projeto</a>
-      <ul>
-        <li><a href="#build-status">Build Status</a></li>
-        <li><a href="#built-with">Built With</a></li>
-        <li><a href="#features">Features</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#requisitos">Requisitos</a></li>
-        <li><a href="#instalação">Instalação</a></li>
-      </ul>
-    </li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#licença">Licença</a></li>
-    <li><a href="#agradecimentos">Agradecimentos</a></li>
-  </ol>
-</details>
-
 ## Sobre o projeto
 
 Este projeto é uma API implementada em .NET Core 6 que foi construída utilizando a arquitetura Domain Drive Design.
@@ -35,14 +11,6 @@ Este projeto é bem simples, ele é pequeno, mas eu abordo aqui varias técnicas
 Esta API permite que o usuário se cadastre e faça controle de suas receitas de cozinha preferidas, podendo criar uma receita com título, ingredientes e modo de preparo. Cada receita recebe uma classificação para tornar fácil o filtro (café da manhã, almoço, sobremesa, jantar), pode ser editada e/ou excluída.
 
 Uma feature legal que eu adicionei foi permitir que os usuários compartilhem suas receitas com outros usuários do App. Este compartilhamento é feito através de um WebSocket para permitir a conexão. O usuário que desejar compartilhar suas receitas vai gerar um QR Code para que um outro usuário leia e seja aceito como uma conexão. A partir dai, os dois usuários vão ver as receitas um do outro :)
-
-### Build Status
-
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=MeuLivroDeReceitas&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=MeuLivroDeReceitas)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=MeuLivroDeReceitas&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=MeuLivroDeReceitas)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=MeuLivroDeReceitas&metric=bugs)](https://sonarcloud.io/summary/new_code?id=MeuLivroDeReceitas)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=MeuLivroDeReceitas&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=MeuLivroDeReceitas)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=MeuLivroDeReceitas&metric=coverage)](https://sonarcloud.io/summary/new_code?id=MeuLivroDeReceitas)
 
 ### Built With
 
