@@ -1,0 +1,114 @@
+# Arquivo .gitignore para projetos .NET
+
+###################################
+# Pastas de Saída de Build e Binários
+###################################
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+**/[Bb]in/
+**/[Oo]bj/
+
+# Pacotes NuGet (pode ser ignorado globalmente se for o padrão)
+[Pp]ackages/
+# Restauração de pacotes temporários
+*.nupkg
+*.snupkg
+# Cache de NuGet, se não estiver usando a pasta padrão
+# **/.nuget/packages/
+
+# Resultados de Testes
+[Tt]est[Rr]esult[Ss]/
+[Bb]uild[Ll]ogs/
+.vs/
+.history/
+*.log
+*.vspscc
+*.vssscc
+*.builds
+*.tmp
+*.bak
+*.user
+*.suo
+
+###################################
+# Visual Studio / IDE
+###################################
+# Arquivos de usuário do Visual Studio
+*.user
+*.suo
+# Arquivos de solução e projeto temporários
+*.opensdf
+*.sdf
+*.tlog
+*.ipch
+*.aps
+
+# Pastas e arquivos do Visual Studio Code (VS Code)
+.vscode/
+
+# Pastas de ferramentas e cache
+.toolstmp/
+.cache/
+
+###################################
+# Dependências e Ferramentas
+###################################
+# Arquivos gerados pelo ReSharper e JetBrains (se usados)
+*.dotsettings.user
+*.resharper
+# Arquivos de cache do Rider (se usado)
+.idea/
+.rdocml
+
+# Ferramentas de análise de código
+[Mm]erge[Aa]l[Ll]og.[Xx][Mm][Ll]
+
+###################################
+# ASP.NET/ASP.NET Core
+###################################
+# Arquivos de configurações secretos e de ambiente (NÃO FAÇA COMMIT DE SEGREDOS!)
+appsettings*.Development.json
+appsettings*.Staging.json
+appsettings*.Production.json
+appsettings.json.user
+**/*.pubxml
+**/*.pfx
+**/*.snk
+
+# Node.js/Frontend (se usado em projetos Core ou Web)
+[Nn]ode_[Mm]odules/
+[Ww]wwroot/[Dd]ist/
+[Cc]ompiled/
+npm-debug.log*
+
+# Docker
+docker-compose.override.yml
+docker-compose.vs.debug.yml
+# Excluir o contexto de build do Docker
+!**/Dockerfile
+!**/.dockerignore
+
+###################################
+# Entity Framework Core (EF Core) Migrations
+###################################
+# Ignorar arquivos temporários de design-time
+*.db
+
+# Caso você use a pasta padrão para Migrações, você *não* deve ignorar a pasta 'Migrations' em si,
+# pois ela contém o código necessário para versionamento do banco de dados.
+
+# Ignorar banco de dados SQLite temporário (se usado)
+*.sqlite
+*.db
+
+###################################
+# Arquivos do Sistema Operacional
+###################################
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
